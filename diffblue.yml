@@ -1,0 +1,127 @@
+# Tested on Deeptest release 1.10.0
+cbmcArguments:
+  cover-function-only: false
+  depth: false
+  do-not-test-methods-with-access: [ private ]
+  java-generate-no-comments: true
+  no-trivial-tests: true
+phases:
+-
+  timeout: 300
+  cbmcArguments:
+    java-assume-inputs-non-null: true
+    max-nondet-array-length: 10
+    string-non-empty: true
+    unwind: 1
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 20
+    unwind: 2
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+units:
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/MultimapSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/MultimapSubject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/MapSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/MapSubject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/SortedMapSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/SortedMapSubject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/IterableSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/IterableSubject.java
+  - target:
+    - dir: extensions/proto/target/classes
+      file: com/google/common/truth/extensions/proto/ProtoTruthMessageDifferencer.class
+      sourceDir: extensions/proto/src/main/java
+      sourceFile: com/google/common/truth/extensions/proto/ProtoTruthMessageDifferencer.java
+    # Child of ProtoTruthMessageDifferencer.class
+    - dir: core/target/classes
+      file: com/google/common/truth/Correspondence.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/Correspondence.java
+  - target:
+    - dir: extensions/proto/target/classes
+      file: com/google/common/truth/extensions/proto/FluentEqualityConfig.class
+      sourceDir: extensions/proto/src/main/java
+      sourceFile: com/google/common/truth/extensions/proto/FluentEqualityConfig.java
+  - target:
+    - dir: extensions/proto/target/classes
+      file: com/google/common/truth/extensions/proto/DiffResult.class
+      sourceDir: extensions/proto/src/main/java
+      sourceFile: com/google/common/truth/extensions/proto/DiffResult.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/SortedSetSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/SortedSetSubject.java
+  - target:
+    - dir: extensions/re2j/target/classes
+      file: com/google/common/truth/extensions/re2j/Re2jSubjects.class
+      sourceDir: extensions/re2j/src/main/java
+      sourceFile: com/google/common/truth/extensions/re2j/Re2jSubjects.java
+    # Child of Re2jSubjects.class
+    - dir: core/target/classes
+      file: com/google/common/truth/FailureMetadata.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/FailureMetadata.java
+    # Child of Re2jSubjects.class
+    - dir: core/target/classes
+      file: com/google/common/truth/Subject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/Subject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/Expect.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/Expect.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/GraphMatching.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/GraphMatching.java
+  - target:
+    - dir: extensions/liteproto/target/classes
+      file: com/google/common/truth/extensions/proto/LiteProtoSubject.class
+      sourceDir: extensions/liteproto/src/main/java
+      sourceFile: com/google/common/truth/extensions/proto/LiteProtoSubject.java
+    # Child of LiteProtoSubject.class
+    - dir: core/target/classes
+      file: com/google/common/truth/IntegerSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/IntegerSubject.java
+    # Child of LiteProtoSubject.class
+    - dir: core/target/classes
+      file: com/google/common/truth/Truth.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/Truth.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/ThrowableSubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/ThrowableSubject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/PrimitiveFloatArraySubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/PrimitiveFloatArraySubject.java
+  - target:
+    - dir: core/target/classes
+      file: com/google/common/truth/PrimitiveDoubleArraySubject.class
+      sourceDir: core/src/main/java
+      sourceFile: com/google/common/truth/PrimitiveDoubleArraySubject.java
